@@ -21,7 +21,7 @@ def quadraticCalculator(a, b, c):
 regexTerm = r"([+-]?[^-+]+)"
 
 # Checks to see if it is a variable
-regexVar = r"([a-z])"
+regexVar = r"([a-zA-Z])"
 
 # Checks to see if the power of the term equals 2
 regexFact2 = r"(\^2)$"
@@ -36,7 +36,7 @@ regexInvalid2 = r"([a-z][0-9]+)"
 regexInt = r"(^[0-9+-]*)"
 
 # Gets input and separates them into different lists
-poly = input("Enter a thing here fr: ")
+poly = input("Enter a quadratic polynomial: ")
 
 
 # Checks to see if the input is invalid and adds them to a list

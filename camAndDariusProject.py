@@ -17,7 +17,7 @@ def quadraticCalculator(a, b, c):
 	print(ans2)
 
 
-# Checks to see if it a character within the term
+# Checks to see if it is a character within the term
 regexTerm = r"([+-]?[^-+]+)"
 
 # Checks to see if it is a variable
@@ -29,13 +29,13 @@ regexFact2 = r"(\^2)$"
 # Checks to see if there are any powers greater than 2 or less than 0
 regexInvalid = r"(\^[3-9]|\^[+-])"
 
-# Checks to see if there are any digits following a carat
+# Checks to see if there are any digits following a variable
 regexInvalid2 = r"([a-z][0-9]+)"
 
 # Checks the integer values of each term
 regexInt = r"(^[0-9+-]*)"
 
-# Gets input and separates them into different lists
+# Gets input
 poly = input("Enter a quadratic polynomial: ")
 
 
@@ -43,7 +43,8 @@ poly = input("Enter a quadratic polynomial: ")
 invalidList = re.findall(regexInvalid, poly)
 invalidList += re.findall(regexInvalid2, poly)
 
-# Outputs the equation variable to a set, if the set has more than one item, the equation is invalid
+# Outputs the equation variable to a set in order to get unique variables
+# If the set has more than one item, the equation is invalid because more than one variable has been found (this violates the grammar)
 equationVar = set(re.findall(regexVar, poly))
 equationVarList = list(equationVar)
 equationVarLength = len(equationVar)
@@ -51,7 +52,7 @@ equationVarLength = len(equationVar)
 #Sets the output to a spaceless polynomial equation
 output = re.findall(regexTerm, poly.replace(" ", ""))
 
-#Lists of terms
+#Lists of terms, their integer values, and the total value of their integers
 fact2 = []
 fact2Ints = []
 fact2Total = 0
@@ -88,10 +89,10 @@ else:
 
 	for fact1Term in output:
 
-		# Checks to see if there are any power 1 variable terms
+		# Checks to see if there are any variable terms of power 1
 		if fact1Term[-1] == equationVarList[0]:
 			
-			# Captures the power 1 variable terms and appends them to a list
+			# Captures the first power variable terms and appends them to a list
 			fact1.append(fact1Term)
 
 			# Checks to see if the leading coefficient is an assumed 1, else appends the integer to a list
@@ -107,13 +108,13 @@ else:
 		# Combines the factor 2 and factor 1 terms into one list
 		facts = fact1 + fact2
 		
-		# Checks to see if the term is in either list, if not appends to constants list and combines like terms
+		# Checks to see if the term is in either list, if not, appends to constants list and combines like terms
 		if constTerm not in facts:
 			constants.append(constTerm)
 			constantsTotal += int(constants[-1])
 	
 
-	#Converts ints to strings if they are greater than or equal to 0
+	#Concatenates an addition sign if the value is greater than or equal to 0 in order to print the final equation
 	if (constantsTotal >= 0):
 		constantsTotal = "+" + str(constantsTotal)
 
@@ -122,6 +123,6 @@ else:
 
 	print("Terms are : ", output)
 
-	print(f'Final polynomial is: {fact2Total}{equationVarList[0]}^2 {fact1Total}{equationVarList[0]} {constantsTotal}')
+	print(f'Final equation is: {fact2Total}{equationVarList[0]}^2 {fact1Total}{equationVarList[0]} {constantsTotal} = 0')
 	
 	quadraticCalculator(fact2Total, int(fact1Total), int(constantsTotal))

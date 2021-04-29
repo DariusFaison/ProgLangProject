@@ -8,7 +8,7 @@ The workload was evenly distributed between us. We took a pair programming appro
 # How To Run the Program
 The program contains the necessary Python library imports for the program. All that is needed to run the program is to load the .py file in your preferred IDE (VSCode, Codeblocks, replit.com, etc), compile, and run. However, to run the program again, you have to reload it as it is a single-use program.
 
-# Screenshots & Explanations
+# Test Cases
 ![Screenshot (65)](https://user-images.githubusercontent.com/33269709/116493974-e1e95900-a86d-11eb-99d7-a7b1383dd4a3.png)
 -    A standard example of a quadratic equation
 -    Successfully parsed and solved

@@ -1,5 +1,5 @@
 # ProgLangProject
-A project for Programming Languages
+Final project for Organization of Programming Languages created by Cameron Todd and Darius Faison.
 
 # Workload Distribution
 
